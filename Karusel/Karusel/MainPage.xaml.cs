@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Karusel
@@ -12,6 +13,12 @@ namespace Karusel
     {
         public MainPage()
         {
+            Button openTestButton = new Button()
+            {
+                Text = "Пройти тест",
+                HorizontalOptions = LayoutOptions.FillAndExpand
+            };
+            openTestButton.Clicked += OpenTestButton_Clicked;
             var start = new ContentPage
             {
                 Content = new StackLayout
@@ -25,7 +32,8 @@ namespace Karusel
                             HorizontalOptions = LayoutOptions.Center}
 
                         },
-                          new Image {Source = "es.jpg",
+                          new Image {
+                          Source = "es.jpg",
                           WidthRequest = 10,
                           HeightRequest = 400,},
                         new Label
@@ -38,6 +46,7 @@ namespace Karusel
                             HeightRequest = 250,
                             FontSize = Device.GetNamedSize (NamedSize.Large, typeof(Label))
                         },
+                        openTestButton
                     }
                 }
             };
@@ -62,9 +71,10 @@ namespace Karusel
                             HorizontalOptions = LayoutOptions.Center,
                             FontSize = Device.GetNamedSize (NamedSize.Large, typeof(Label))
                         },
-                        new Image {Source = "zlo.jpg",
+                        new Image { Source = "zlo.jpg",
                           WidthRequest = 10,
-                          HeightRequest = 400,}
+                          HeightRequest = 400 },
+                        openTestButton
                     }
                 }
             };
@@ -91,7 +101,8 @@ namespace Karusel
                         },
                         new Image {Source = "vloroee.jpg",
                           WidthRequest = 10,
-                          HeightRequest = 400,}
+                          HeightRequest = 400},
+                        openTestButton
                     }
                 }
             };
@@ -118,7 +129,8 @@ namespace Karusel
                         },
                         new Image {Source = "fleg.jpg",
                           WidthRequest = 10,
-                          HeightRequest = 400,}
+                          HeightRequest = 400},
+                        openTestButton
                     }
                 }
             };
@@ -143,9 +155,10 @@ namespace Karusel
                             HorizontalOptions = LayoutOptions.Center,
                             FontSize = Device.GetNamedSize (NamedSize.Large, typeof(Label))
                         },
-                        new Image {Source = "grust.jpg",  
+                        new Image {Source = "grust.jpg",
                             WidthRequest = 300,
-                            HeightRequest = 300,}
+                            HeightRequest = 300},
+                        openTestButton
                     }
                 }
             };
@@ -154,6 +167,11 @@ namespace Karusel
             Children.Add(sangvinik);
             Children.Add(flegmatik);
             Children.Add(melanholik);
+        }
+
+        private async void OpenTestButton_Clicked(object sender, EventArgs e)
+        {
+            await Browser.OpenAsync("https://testometrika.com/personality-and-temper/the-formula-of-temperament-a-belov/");
         }
     }
 }
